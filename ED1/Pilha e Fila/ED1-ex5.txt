@@ -1,0 +1,110 @@
+/*5. Ainda sobre Deque, responda:
+(a) É possível considerar a Pilha como um caso especial de Deque?
+ Em caso afirmativo, ilustre sua resposta usando um pseudocódigo. Em caso negativo, justifique.
+(b) É possível considerar a Fila como um caso especial de Deque? 
+Em caso afirmativo, ilustre sua resposta usando um pseudocódigo. Em caso negativo, justifique.*/
+
+
+/*
+a)Sim, é possível considerar a pilha uma caso especial de deque, 
+para que isso aconteça, usamos a variavel final como topo e usamos apenas as funções inserir_final e retirar_final 
+para simular as funções empilhar e desempilhar da pilha, respeitando o conceito (LIFO).*/
+
+Tipo de Dados:
+    estrutura deque:
+        elementos[MAX] // vetor que armazena os elementos do deque
+        nro_elementos // contador de elementos do deque
+        inicio // índice do início do deque
+        final // índice do fim do deque, que representa o topo da pilha
+
+Função criar():
+    dq = alocar memória para uma variável do tipo deque
+    se dq != nulo:
+        dq->final = -1
+    retornar dq
+
+Função destruir(deque *dq):
+    se dq != nulo:
+        liberar memória alocada para dq
+
+Função deque_vazio(deque *dq) -> booleano:
+    se dq->final == -1:
+        retornar verdadeiro // deque vazio
+    retornar falso // deque não vazio
+
+Função deque_cheio(dq: deque) → booleano:
+    se dq->final == MAX-1:
+        retornar verdadeiro // deque cheio
+    retornar falso // deque não cheio
+
+Função inserir_final(deque *dq, char x) -> booleano
+    se deque_cheio(dq) == verdadeiro:
+        retornar falso // impossível inserir, deque cheio
+    senão:
+        dq->final = dq->final + 1
+        dq->elementos[dq->final] = x
+        retornar verdadeiro // inserção bem sucedida
+
+Função remover_final(deque *dq, char *x) -> booleano:
+    se deque_vazio(dq) == verdadeiro:
+        retornar falso // impossível remover, deque vazio
+    senão:
+        *x = dq.elementos[dq->final]
+        dq->final = dq->final - 1
+        retornar verdadeiro // remoção bem sucedida
+
+/*b)Sim, é possível considerar uma Fila como um caso especial de Deque, 
+para que isso aconteça, utilizamos as funções inserir_final e remover_inicio do Deque
+para simular as funções da fila e respeitar o conceito (FIFO).*/
+
+Tipo de Dados:
+    estrutura deque:
+        elementos[MAX] // vetor que armazena os elementos do deque
+        nro_elementos // contador de elementos do deque
+        inicio // índice do início do deque
+        final // índice do fim do deque
+
+Função criar():
+    dq = alocar memória para uma variável do tipo deque
+    se dq != nulo:
+        dq->final = 0
+        dq->nro_elemetos=0
+        dq->inicio=0
+    retornar dq
+
+Função destruir(deque *dq):
+    se dq != nulo:
+        liberar memória alocada para dq
+
+Função deque_vazio(deque *dq) -> booleano:
+    se dq->nro_elementos == 0:
+        retornar verdadeiro // deque vazio
+        retornar falso // deque não vazio
+
+Função deque_cheio(dq: deque) → booleano:
+    se dq->nro_elementos == MAX:
+        retornar verdadeiro // deque cheio
+        retornar falso // deque não cheio
+
+Função inserir_final(deque *dq, char x) -> booleano
+    se deque_cheio(dq) == verdadeiro:
+        retornar falso // impossível inserir, deque cheio
+        senão:
+        dq->nro_elementos=dq->nro_elementos+1
+            dq->elementos[dq->final] = x
+            se dq->final == MAX-1
+            dq->final=0
+            dq->final = dq->final + 1
+            
+        retornar verdadeiro // inserção bem sucedida
+
+Função remover_inicio(deque *dq, char *x) -> booleano:
+    se deque_vazio(dq) == verdadeiro:
+        retornar falso // impossível remover, deque vazio
+        senão:
+            dq->nro_elementos = dq->nro_elementos - 1
+            *x = dq->elementos[dq->inicio]
+            se dq->inicio == MAX-1  
+                dq->inicio = 0
+            dq->inicio = dq->inicio + 1
+        retornar verdadeiro // remoção bem sucedida
