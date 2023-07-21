@@ -1,0 +1,21 @@
+3. Considere a seguinte declaração de variáveis:
+
+int a, b;
+int *P1, *P2, **P3;
+float *P4;
+Quais das seguintes operações funcionam corretamente? Explique o que ocorre nos
+casos corretos.
+(a) a = 10; Correta. A variável a recebe o valor 10 atribuido pelo =.
+(b) b = &a; Correta. A variável b recebe o endereço da variável a.
+(c) P1 = a; Incorreta.
+(d) a = &P1; Incorreta.
+(e) *P1 = &a; Incorreta.
+(f) &P1 = &a; Incorreta.
+(g) P4 = &a; Incorreta.
+(h) P4 = P1; Inccorreta.
+(i) P2 = P1 = &a; Correta. Os ponteiros P2 e P1 recebem o endereço de a. 
+(j) *P1 = 20; Correta. O valor 20 é direcionado para o endereço de memória que P1 aponta.
+(k) *P2 = *P1;Incorreta.
+(l) *P3 = &P1; Incorreto. 
+(m) P3 = &P2; Correto. P3 recebe o endereço de P2.
+(n) **P3 = *P1; Incorreto.

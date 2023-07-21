@@ -1,0 +1,4 @@
+4. Explique a diferença entre passagem de parâmetros por valor e por referência:
+A passagem por valor não permite acesso ao conteudo da váriavel original, sendo assim o que é feito no escopo da função não modifica a váriavel original.
+
+A passagem por referência permite acesso a variável original, pois é passado um ponteiro para a variável original como parâmetro da função, permitindo assim alterações na variável original pelo ponteiro.
